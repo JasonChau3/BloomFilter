@@ -1,10 +1,10 @@
 /*
- * Filename: testrevHash
- * Author: TODO
- * Userid: TODO
+ * Filename: testrevhash
+ * Author: Jason Chau
+ * Userid: cs30fie
  * Description: Unit test program to test the function revHash().
- * Date: TODO
- * Sources of Help: TODO
+ * Date: 11/7/18
+ * Sources of Help: PIAZZA
  */
 
 #include <string.h>
@@ -13,13 +13,13 @@
 #include "test.h"    /* For TEST() macro and stdio.h */
 #include "pa3.h"
 
-static int revHashC(char * src) {
-
-  /* TODO
-   * Put C version of revHash here
-   */
-
-  return 0;
+static int hashC(char * src) {
+int hash = HASH_START_VAL; 
+int strLen = strlen(src);
+for( int i = strLen -1; i >= 0; i-- ) {
+      hash = hash * HASH_PRIME+ src[i];
+}
+return hash;
 
 }
 
@@ -32,15 +32,31 @@ static int revHashC(char * src) {
 void testrevHash() {
 
   char * src = "ABCD";
-  /* Validate the hash value. */
-  TEST( revHash(src) == revHashC(src) );
+  TEST( revHash(src) == hashC(src) );
   
   src = "";
-  TEST( revHash(src) == revHashC(src) );
+  TEST( revHash(src) == hashC(src) );
+
+  src = "adlkfn";
+  TEST( revHash(src) == hashC(src) );
+
+  src = "aldkfnlaskndf";
+  TEST( revHash(src) == hashC(src));
   
-  /*
-   * TODO: YOU MUST WRITE MORE TEST CASES FOR FULL POINTS
-   */
+  src = "trololol";
+  TEST( revHash(src) == hashC(src));
+
+  src = "youregettingtrolled";
+  TEST( revHash(src) == hashC(src));
+
+  src = "yeettroll";
+  TEST( revHash(src) == hashC(src));
+
+  src = "aklsdnf";
+  TEST( revHash(src) == hashC(src));
+
+  src = "adsfasdfasdfasfdasfk";
+  TEST( revHash(src) == hashC(src));
 
 }
 
