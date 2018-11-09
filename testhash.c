@@ -59,9 +59,6 @@ void testhash() {
   src = "adsfasdfasdfasfdasfk";
   TEST( hash(src) == hashC(src));
   
-  /*
-   * TODO: YOU MUST WRITE MORE TEST CASES FOR FULL POINTS
-   */
 
 }
 

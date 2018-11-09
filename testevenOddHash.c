@@ -27,35 +27,27 @@ void testevenOddHash() {
   TEST( evenOddHash(src) == 24002449 );
   
   src = "";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == 11 );
 
   src = "adlkfn";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == 797332923  );
 
   src = "aldkfnlaskndf";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == 617772286 );
   
   src = "trololol";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == 198791566 );
 
   src = "youregettingtrolled";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == -1027900157 );
 
   src = "yeettroll";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == -1157507401 );
 
   src = "aklsdnf";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == -567099642 );
 
   src = "adsfasdfasdfasfdasfk";
-  fprintf(stdout,"%d\n",evenOddHash(src));
   TEST( evenOddHash(src) == -1845287348 );
 
 }
