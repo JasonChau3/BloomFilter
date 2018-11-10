@@ -22,34 +22,44 @@
  *
  */
 void testevenOddHash() {
-
+  char * srd = "acbd";
   char * src = "ABCD";
   TEST( evenOddHash(src) == 24002449 );
   
+  src = "abcd";
+  TEST( evenOddHash(src) == hash(srd));
+  
+  src = "ghki";
+  srd = "gkhi";
+  TEST( evenOddHash(src) == hash(srd));
+
+  src = "asdfgh";
+  srd = "adgsfh";
+  TEST( evenOddHash(src) == hash(srd));
+
   src = "";
   TEST( evenOddHash(src) == 11 );
 
   src = "adlkfn";
-  TEST( evenOddHash(src) == 797332923  );
+  srd = "alfdkn";
+  TEST( evenOddHash(src) == hash(srd));
+  
 
   src = "aldkfnlaskndf";
-  TEST( evenOddHash(src) == 617772286 );
+  srd = "adflsnflknakd";
+  TEST( evenOddHash(src) == hash(srd));
   
   src = "trololol";
-  TEST( evenOddHash(src) == 198791566 );
+  srd = "tooorlll";
+  TEST( evenOddHash(src) == hash(srd));
 
-  src = "youregettingtrolled";
-  TEST( evenOddHash(src) == -1027900157 );
+  src = "hotdog";
+  srd = "htoodg";
+  TEST( evenOddHash(src) == hash(srd));
 
-  src = "yeettroll";
-  TEST( evenOddHash(src) == -1157507401 );
-
-  src = "aklsdnf";
-  TEST( evenOddHash(src) == -567099642 );
-
-  src = "adsfasdfasdfasfdasfk";
-  TEST( evenOddHash(src) == -1845287348 );
-
+  src = "donkey";
+  srd = "dneoky";
+  TEST( evenOddHash(src) == hash(srd));
 }
 
 int main() {
