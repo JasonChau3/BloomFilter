@@ -16,54 +16,65 @@
 
 
 /*
- * Unit Test for revHash.s
+ * Unit Test for revhashC.s
  *
- * long revHash( char * src );
+ * long revhashC( char * src );
  *
  */
+
+static int hashC(char * src) {
+int hash = HASH_START_VAL; 
+int strLen = strlen(src);
+for( int i = 0; i < strLen; i++ ) {
+      hash = hash * HASH_PRIME + src[i];
+}
+return hash;
+
+}
+
 void testevenOddHash() {
   char * srd = "acbd";
   char * src = "ABCD";
   TEST( evenOddHash(src) == 24002449 );
   
   src = "abcd";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
   
   src = "ghki";
   srd = "gkhi";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
 
   src = "asdfgh";
   srd = "adgsfh";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
 
   src = "";
   TEST( evenOddHash(src) == 11 );
 
   src = "adlkfn";
   srd = "alfdkn";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
   
 
   src = "aldkfnlaskndf";
   srd = "adflsnflknakd";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
   
   src = "trololol";
   srd = "tooorlll";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
 
   src = "hotdog";
   srd = "htoodg";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
 
   src = "donkey";
   srd = "dneoky";
-  TEST( evenOddHash(src) == hash(srd));
+  TEST( evenOddHash(src) == hashC(srd));
 }
 
 int main() {
-  fprintf( stderr, "Testing revHash...\n\n" );
+  fprintf( stderr, "Testing revhashC...\n\n" );
   testevenOddHash();
   fprintf( stderr, "\nDone running tests.\n" );
   return 0;

@@ -103,10 +103,10 @@ testrevHash: $(HEADERS) revHash.o testrevHash.o pa3Globals.o
 	$(GCC) $(LD_FLAGS) -o testrevHash testrevHash.o revHash.o pa3Globals.o
 	@echo "Compilation Successful!"
 # --- Test for evenOddHash ---
-testevenOddHash: $(HEADERS) evenOddHash.o testevenOddHash.o pa3Globals.o hash.o
+testevenOddHash: $(HEADERS) evenOddHash.o testevenOddHash.o pa3Globals.o 
 	@echo "Compiling testevenOddHash.c"
 	$(GCC) $(LD_FLAGS) -o testevenOddHash testevenOddHash.o \
-	evenOddHash.o pa3Globals.o hash.o
+	evenOddHash.o pa3Globals.o 
 	@echo "Compilation Successful!"
 # --- Test for prependNode ---
 testprependNode: $(HEADERS) prependNode.o testprependNode.o
