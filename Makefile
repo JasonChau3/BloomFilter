@@ -109,7 +109,7 @@ testevenOddHash: $(HEADERS) evenOddHash.o testevenOddHash.o pa3Globals.o
 	evenOddHash.o pa3Globals.o 
 	@echo "Compilation Successful!"
 # --- Test for prependNode ---
-testprependNode: $(HEADERS) prependNode.o testprependNode.o
+testprependNode: $(HEADERS) prependNode.o testprependNode.o 
 	@echo "Compiling testprependNode.c"
 	$(GCC) $(LD_FLAGS) -o testprependNode testprependNode.o prependNode.o
 	@echo "Compilation Successful!"

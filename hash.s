@@ -1,4 +1,4 @@
-/* File Name : setClock.s
+ /* File Name : setClock.s
  * Author: Jason Chau
  * Date: 10/26/18
  * ID: cs30fie
@@ -34,7 +34,7 @@
     */
   
 hash:
-        push    {fp,lr}
+        push    {fp,lr} 
         add     fp,sp, FP_OFFSET
         sub     sp,sp,SP_OFFSET
         
