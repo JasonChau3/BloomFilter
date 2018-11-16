@@ -23,11 +23,11 @@
    Error Conditions: none
    */
 void bitTableAddString( table_t *table, char *string) {
-
+  int bitnum = 8;
   int hash = table->hashFunction( string ) ;
   int index = ((hash % table->size) + table->size) % table->size;
-  int bit = 1 << index%8;
-  int saved = table->bitArray[index/8] | bit;
-  table-> bitArray[index/8] = saved;
+  int bit = 1 << (index%bitnum);
+  int saved = table->bitArray[index/bitnum] | bit;
+  table-> bitArray[index/bitnum] = saved;
 }
 

@@ -36,11 +36,9 @@ LD_FLAGS	= -g -Wall
 .s.o:
 	@echo "Assembling each assembly source file separately ..."
 	$(ASM) $(ASM_FLAGS) $<
-	@echo ""
 .c.o:
 	@echo "Compiling each C source file separately ..."
 	$(GCC) $(GCC_FLAGS) $<
-	@echo ""
 #
 # Target to create both programs (create and search). This is the default target
 # that gets run when you type 'make' with no target specified
@@ -63,7 +61,6 @@ $(CREATE_EXE):	$(CREATE_OBJS)
 	$(RM) -f test*.o test*.ln
 	@echo "Linking all object modules ..."
 	$(GCC) $(LD_FLAGS) -o $(CREATE_EXE) $(CREATE_OBJS)
-	@echo ""
 	@echo "Compilation Successful!"
 #
 # Target to make the search executable.
@@ -72,7 +69,6 @@ $(SEARCH_EXE):	$(SEARCH_OBJS)
 	$(RM) -f test*.o test*.ln
 	@echo "Linking all object modules ..."
 	$(GCC) $(LD_FLAGS) -o $(SEARCH_EXE) $(SEARCH_OBJS)
-	@echo ""
 	@echo "Compilation Successful!"
 #
 # Target to make the EC executable
@@ -81,13 +77,11 @@ $(SEARCH_EC_EXE):	$(SEARCH_EC_OBJS)
 	$(RM) -f test*.o test*.ln
 	@echo "Linking all object modules ..."
 	$(GCC) $(LD_FLAGS) -o $(SEARCH_EC_EXE) $(SEARCH_EC_OBJS)
-	@echo ""
 	@echo "Compilation Successful!"
 clean:
 	@echo "Cleaning up project directory ..."
 	$(RM) -f $(CREATE_EXE) $(SEARCH_EXE) $(SEARCH_EC_EXE) $(TEST_EXES) \
 		*.o *.ln core a.out
-	@echo ""
 	@echo "Clean."
 #
 # Unit test targets
@@ -103,36 +97,32 @@ testrevHash: $(HEADERS) revHash.o testrevHash.o pa3Globals.o
 	$(GCC) $(LD_FLAGS) -o testrevHash testrevHash.o revHash.o pa3Globals.o
 	@echo "Compilation Successful!"
 # --- Test for evenOddHash ---
-testevenOddHash: $(HEADERS) evenOddHash.o testevenOddHash.o pa3Globals.o 
+testevenOddHash: $(HEADERS) evenOddHash.o testevenOddHash.o pa3Globals.o
 	@echo "Compiling testevenOddHash.c"
 	$(GCC) $(LD_FLAGS) -o testevenOddHash testevenOddHash.o \
-	evenOddHash.o pa3Globals.o 
+	evenOddHash.o pa3Globals.o
 	@echo "Compilation Successful!"
 # --- Test for prependNode ---
-testprependNode: $(HEADERS) prependNode.o testprependNode.o 
+testprependNode: $(HEADERS) prependNode.o testprependNode.o
 	@echo "Compiling testprependNode.c"
 	$(GCC) $(LD_FLAGS) -o testprependNode testprependNode.o prependNode.o
 	@echo "Compilation Successful!"
 # --- Test for populateTables ---
 testpopulateTables: $(HEADERS) populateTables.o testpopulateTables.o \
 	prependNode.o hash.o revHash.o evenOddHash.o pa3Globals.o \
-	llTableAddString.o bitTableAddString.o getRemainder.o \
-	retrieveBit.o retrieveLinkedList.o
+	llTableAddString.o bitTableAddString.o getRemainder.o 
 	@echo "Compiling testpopulateTables.c"
 	$(GCC) $(LD_FLAGS) -o testpopulateTables testpopulateTables.o \
 	populateTables.o prependNode.o hash.o revHash.o evenOddHash.o \
-	pa3Globals.o llTableAddString.o bitTableAddString.o getRemainder.o \
-	retrieveBit.o retrieveLinkedList.o
+	pa3Globals.o llTableAddString.o bitTableAddString.o getRemainder.o 
 	@echo "Compilation Successful!"
 # --- Test for writeTables ---
 testwriteTables: $(HEADERS) writeTables.o testwriteTables.o populateTables.o \
 	prependNode.o hash.o revHash.o evenOddHash.o pa3Globals.o \
-	llTableAddString.o bitTableAddString.o getRemainder.o \
-	retrieveBit.o retrieveLinkedList.o
+	llTableAddString.o bitTableAddString.o getRemainder.o 
 	@echo "Compiling testwriteTables.c"
 	$(GCC) $(LD_FLAGS) -o testwriteTables testwriteTables.o writeTables.o \
 	populateTables.o prependNode.o hash.o revHash.o evenOddHash.o \
-	pa3Globals.o llTableAddString.o bitTableAddString.o getRemainder.o \
-	retrieveBit.o retrieveLinkedList.o
+	pa3Globals.o llTableAddString.o bitTableAddString.o getRemainder.o 
 	@echo "Compilation Successful!"
 

@@ -29,7 +29,8 @@ void prependNode (linkedList_t ** head, char * str) {
     return;
     }
 //is it 4 times stringlength?
-    char *string = malloc(strlen(str));
+    char *string = malloc(sizeof(char)*(strlen(str)+1)); //allocate memory for the string
+    //+1 because of the null terminator
     if (string == NULL) {
         free(linked);
         perror(MEM_ERR);
@@ -38,11 +39,7 @@ void prependNode (linkedList_t ** head, char * str) {
     //how do you allocate the memory with the string?
     strcpy(string, str);
     linked->value = string;
-    linked->next =(*head);
+    linked->next =(*head); //dereference head once or twice?
     *head = linked; //make the head point to the linked 
- 
 
-  //do head.next = the node you made
-  // and then the node you made next node is the saved value.
-  
   }

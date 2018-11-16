@@ -1,5 +1,5 @@
 /*
- * Filename: bitTableAddString
+ * Filename: writeTables
  * Author: Jason Chau
  * Userid: cs30fie
  * Description: This function will populate the hash tables
@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "pa3.h"
 /*
-  Function Name: bitTableAddString
+  Function Name: writeTables
   Function Prototype:void writeTables(FILE *outFile, table_t *htbl,
   table_t *rtbl, table_t *eotbl) 
   Description: This function will populate the hash tables
@@ -26,10 +26,10 @@ void writeTables(FILE *outFile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
     int countint = 4;
     int numBytes = 8;
     int arr = 7;
-    fwrite(htbl->size, countint, 1, outFile);
+    fwrite(&(htbl->size), countint, 1, outFile);
     int size = ((htbl->size + arr) / numBytes);
-    fwrite(htbl->bitArray,1,size, outFile);
-    fwrite(rtbl->bitArray,1,size,outFile);
+    fwrite((htbl->bitArray),1,size, outFile);
+    fwrite((rtbl->bitArray),1,size,outFile);
 
 //loop through the array of the table
     for ( int x = 0 ; x < eotbl->size; x++ ) {

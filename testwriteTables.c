@@ -14,38 +14,51 @@
 #include "pa3.h"
 
 /*
- * Unit Test for hash.s
+ * Unit Test for writeTables
  *
  * long hash( char * src );
  *
  */
 void testwriteTables() {
-table_t table;
-table_t revTable;
-table_t evoddTable;
 
-table.size = BUFSIZ;
-revTable.size = BUFSIZ;
-evoddTable.size = BUFSIZ;
+    //allocate the memory for the hash table
+    table_t table = {
+        .size = DEFAULT_SIZE,
+        .bitArray = calloc(sizeof(char), (DEFAULT_SIZE +7 )/8),
+        .hashFunction = hash
+    };
 
-table.hashFunction = &hash;
-revTable.hashFunction = &revHash;
-evoddTable.hashFunction = &evenOddHash;
+    //allocate the memory for the revhash table
+    table_t revTable = {
+        .size = DEFAULT_SIZE,
+        .bitArray = calloc(sizeof(char), (DEFAULT_SIZE +7 )/8),
+        .hashFunction = revHash
+    };
+    //allocate the memory for the evenoddHashtable
+    table_t evoddTable = {
+        .size = DEFAULT_SIZE,
+        .llArray = calloc (sizeof(linkedList_t*), DEFAULT_SIZE),
+        .hashFunction = evenOddHash
+    };
 
-FILE *inputFile = fopen("file1", "rb");
-populateTables(&table,&revTable,&evoddTable,inputFile);
-fclose(inputFile);
+    //open the file
+    FILE *inputFile = fopen("testFile", "rb");
+    //populate the tables
+    populateTables(&table,&revTable,&evoddTable,inputFile);
+    //close the file
+    fclose(inputFile);
 
-FILE *outputFile = fopen("file2", "wb");
-writeTables(outputFile,&table,&revTable,&evoddTable);
-fclose(outputFile);
+    //write in the output of the file
+    FILE *outputFile = fopen("file2", "wb");
+    writeTables(outputFile,&table,&revTable,&evoddTable);
+    fclose(outputFile);
 
 
 }
 
 int main() {
-  fprintf( stderr, "Testing hash...\n\n" );
-  testwriteTables();
-  fprintf( stderr, "\nDone running tests.\n" );
-  return 0;
+    fprintf( stderr, "Testing hash...\n\n" );
+    testwriteTables();
+    fprintf( stderr, "\nDone running tests.\n" );
+    return 0;
 }

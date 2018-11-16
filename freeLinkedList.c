@@ -1,8 +1,8 @@
 /*
- * Filename: bitTableAddString
+ * Filename: freeLinkedList
  * Author: Jason Chau
  * Userid: cs30fie
- * Description: This function will populate the hash tables
+ * Description: This function will free all the memory of the linkedlist.
  * Date: 11/7/18
  * Sources of Help: PIAZZA
  */

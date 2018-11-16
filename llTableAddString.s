@@ -9,7 +9,7 @@
 @Raspberry Pi Directive
         .cpu        cortex-a53
         .syntax     unified
-        .global     llTableAddStrings
+        .global     llTableAddString
         .text
         .align     2
 
@@ -36,7 +36,7 @@
     r3 - temp variable
     */
   
-llTableAddStrings:
+llTableAddString:
         push    {fp,lr} 
         add     fp,sp, FP_OFFSET
         sub     sp,sp,SP_OFFSET
@@ -55,7 +55,7 @@ llTableAddStrings:
         ldr     r2, [fp, HASH]
         ldr     r3, =SizeOffset
         ldr     r3, [r3]
-        ldr     r0, [r0, r3]
+        ldr     r0, [r0, r3]                    @get the size 
         str     r0, [fp, SIZE]                  @store in the size
         
         mov     r1, r0                          @r1 is size
@@ -65,19 +65,19 @@ llTableAddStrings:
         ldr     r1, [fp, SIZE]
         add     r0, r0, r1                      @r0 = (hash % size) + size
         bl      getRemainder                    @ r0 % size
-        @do i multiply r0 with 4 because its 4 bytes.
-        mov     r3, BYTE
+                                                @multiply r0 with 4
+        mov     r3, BYTE                        @index *4
         mul     r0, r0, r3                       
 
         @r0 is now index
         str     r0, [fp, INDEX]
         ldr     r3, =ArrayOffset                @get the array offset
         ldr     r3, [r3]
-        ldr     r0, [fp, TABLE]                @load in r0 as the table
-        add     r0, r0, r3                     @add the arrayoffset to the tab
+        ldr     r0, [fp, TABLE]                 @load in r0 as the table
+        ldr     r0, [r0, r3]                    @add the arrayoffset to the tab
         
-        ldr     r1, [fp, INDEX]               @get the array index
-        add     r0, r0,r1                     @r0 is llArray[index]
+        ldr     r1, [fp, INDEX]                 @get the array index
+        add     r0, r0,r1                       @r0 is llArray[index]
         ldr     r1, [fp, STRING]
         bl      prependNode
          
