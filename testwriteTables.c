@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "test.h"    /* For TEST() macro and stdio.h */
 #include "pa3.h"
-
+#include "freeLinkedList.c"
 /*
  * Unit Test for writeTables
  *
@@ -53,6 +53,15 @@ void testwriteTables() {
     writeTables(outputFile,&table,&revTable,&evoddTable);
     fclose(outputFile);
 
+    free(table.bitArray);
+    free(revTable.bitArray);
+    for ( int x = 0; x <DEFAULT_SIZE; x++) {
+        freeLinkedList(evoddTable.llArray[x]);
+    }
+
+    free(evoddTable.llArray);
+ 
+ 
 
 }
 

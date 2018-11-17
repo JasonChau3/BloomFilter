@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "test.h"    /* For TEST() macro and stdio.h */
 #include "pa3.h"
-
+#include "freeLinkedList.c"
 /*
  * Unit Test for populateTables
  *
@@ -58,16 +58,16 @@ void testpopulateTables() {
             }
 
         }
-    }
-/*    free(table.bitArray);
+   } 
+    free(table.bitArray);
     free(revTable.bitArray);
     for ( int x = 0; x <DEFAULT_SIZE; x++) {
         freeLinkedList(evoddTable.llArray[x]);
     }
 
     free(evoddTable.llArray);
- */
-    
+ 
+   
 }
 int main() {
     fprintf( stdout, "Testing hash...\n\n" );
