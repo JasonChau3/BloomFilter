@@ -2,7 +2,8 @@
  * Filename: create.c
  * Author: Jason Chau
  * Userid: cs30fie
- * Description: This function will populate the hash tables
+ * Description: This function will create the three hashtables in the
+ * stack and populate them with the correct values.
  * Date: 11/7/18
  * Sources of Help: PIAZZA
  */
@@ -16,10 +17,21 @@
 /*
    Function Name: create.c
    Function Prototype:int main( int argc, char *argv[]) {
-Description: This function will free the elements of a linkedlist
-Parameters: head a pointer to the head of the linkedlist
+  Description: This function will create the three hashtables in the
+  stack and populate them with the correct values.
+Parameters: argc - the argument count
+argv[] the array of arguments
 Side Effects: None
-Error Conditions: none
+Error Conditions: 
+1.Size is not a valid number
+2.Size is a number too large to be converted to a long
+3.Size is not within [MIN_SIZE, MAX_SIZE]
+4.Error encountered when opening the file.
+5.Error encountered when opening the file. 
+6.Any missing flag argument or invalid flag 
+7.Missing either of infile flag or output flag 
+8.extra arguments 
+9.Dynamic memory allocation failed
 */
 
 static struct option getopt_longOpts[]  = {
@@ -67,7 +79,7 @@ int main( int argc, char *argv[]) {
                 //check if size is too large a number 
                 if ( errno != 0 ) {
                     char buffer[BUFSIZ];
-                    snprintf(buffer,BUFSIZ ,TOO_LARGE_NUM, optarg , BASE);
+                    snprintf(buffer,BUFSIZ ,TOO_LARGE_NUM, optarg , 0);
                     perror(buffer);
                     fprintf(stderr, SHORT_CREATE_USAGE);
                     return EXIT_FAILURE;
@@ -108,6 +120,12 @@ int main( int argc, char *argv[]) {
                     return EXIT_FAILURE;
                 }
                 break;
+
+             default:
+                fprintf(stderr,SHORT_CREATE_USAGE);
+                return EXIT_FAILURE;
+                break;
+        
 
         }
     }

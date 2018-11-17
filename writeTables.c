@@ -26,8 +26,10 @@ void writeTables(FILE *outFile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
     int countint = 4;
     int numBytes = 8;
     int arr = 7;
+    //write in the sizes
     fwrite(&(htbl->size), countint, 1, outFile);
     int size = ((htbl->size + arr) / numBytes);
+    //you write it in the file of the bit arrays
     fwrite((htbl->bitArray),1,size, outFile);
     fwrite((rtbl->bitArray),1,size,outFile);
 

@@ -24,10 +24,15 @@
    */
 void bitTableAddString( table_t *table, char *string) {
   int bitnum = 8;
+  //make the hashfunction
   int hash = table->hashFunction( string ) ;
+  //get the index
   int index = ((hash % table->size) + table->size) % table->size;
+  //shift the bit by index % bitnum
   int bit = 1 << (index%bitnum);
+  //get that savedbit
   int saved = table->bitArray[index/bitnum] | bit;
+  //and set it
   table-> bitArray[index/bitnum] = saved;
 }
 

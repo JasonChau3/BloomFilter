@@ -1,0 +1,4 @@
+Too many args to /home/linux/ieng6/cs30f/cs30fie/../public/pa3testCreate.
+
+Usage: ./create -i dataFile -o outFile [-s size] [-h]
+

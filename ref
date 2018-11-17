@@ -1,0 +1,4 @@
+Too many args to ./create.
+
+Usage: ./create -i dataFile -o outFile [-s size] [-h]
+
