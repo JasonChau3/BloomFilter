@@ -1,4 +1,0 @@
-Error opening input filter file: No such file or directory
-
-Usage: ./create -i dataFile -o outFile [-s size] [-h]
-

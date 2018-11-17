@@ -171,7 +171,7 @@ int main( int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     errno = 0;
-    evoddTable.bitArray = malloc((sizeof(linkedList_t)*size));
+    evoddTable.llArray = malloc((sizeof(linkedList_t)*size));
     //if there is error free and throw error
     if ( errno !=0 ) {
         free(table.bitArray);
