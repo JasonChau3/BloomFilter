@@ -47,7 +47,7 @@ static struct option getopt_longOpts[]  = {
     {
         LONG_OUTPUT_FLAG, required_argument,0,'o'
     },
-    {0,0,0,0,}
+    {0,0,0,0}
 };
 int main( int argc, char *argv[]) {
     int BASE = 10;
