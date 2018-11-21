@@ -1,4 +1,4 @@
- /* File Name : setClock.s
+ /* File Name : hash.s
  * Author: Jason Chau
  * Date: 10/26/18
  * ID: cs30fie
@@ -42,8 +42,8 @@ hash:
         bl      strlen  
         str     r0, [fp, STRLEN]
         mov     r2, r0                           @get the strlength to r2
-        ldr     r1, =HashStartVal                 @load in the address of
-        ldr     r1, [r1]                              @hashStartVal and get the val
+        ldr     r1, =HashStartVal                @load in the address of
+        ldr     r1, [r1]                         @hashStartVal and get the val
         ldr     r0, [fp,POINTERSTR]
         mov     r3,0
         

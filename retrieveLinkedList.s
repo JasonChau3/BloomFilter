@@ -1,15 +1,15 @@
- /* File Name : llTableAddStrings
+ /* File Name : retrieveLinkedList.s
  * Author: Jason Chau
  * Date: 10/26/18
  * ID: cs30fie
- * Description: This program is meant to set a string into the
- * llarray
+ * Description: This program is meant to get the word at the 
+ *linkedlist 
  *Source of Help: PIAZZA
  */
 @Raspberry Pi Directive
         .cpu        cortex-a53
         .syntax     unified
-        .global     llTableAddString
+        .global     retrieveLinkedList
         .text
         .align     2
 
@@ -23,10 +23,11 @@
         .equ        INDEX, -24
         .equ        BYTE, 4
 /*
-  Function Name: llTableAddStrings
-  Function Prototype: void llTableAddStrings( table_t *table, char *string)
-  Description: This function will set the string into an llarray
+  Function Name: retrieveLinkedList
+  Function Prototype: void retrieveLinkedList( table_t *table, char *string)
+  Description: This function will check if the string is in the llarray
   Parameters: *str - a string pointer that points to a string
+              *table - the table to be checked
    Side Effects: None
    Error Conditions: none
    registers used :
@@ -36,7 +37,7 @@
     r3 - temp variable
     */
   
-llTableAddString:
+retrieveLinkedList:
         push    {fp,lr} 
         add     fp,sp, FP_OFFSET
         sub     sp,sp,SP_OFFSET
@@ -78,9 +79,7 @@ llTableAddString:
         
         ldr     r1, [fp, INDEX]                 @get the array index
         add     r0, r0,r1                       @r0 is llArray[index]
-        ldr     r1, [fp, STRING]
-        bl      prependNode
-         
+        ldr     r0, [r0]                        @load in the actual value 
 
        @Standard Epilogue
         sub     sp, fp, FP_OFFSET

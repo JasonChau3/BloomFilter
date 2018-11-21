@@ -35,6 +35,7 @@ Error Conditions:
 */
 
 static struct option getopt_longOpts[]  = {
+    //optlong struct
     {
         LONG_HELP_FLAG,no_argument,0,'h'
     },
@@ -47,7 +48,7 @@ static struct option getopt_longOpts[]  = {
     {
         LONG_OUTPUT_FLAG, required_argument,0,'o'
     },
-    {0,0,0,0}
+    {0,0,0,0}//null-terminate the optLong
 };
 int main( int argc, char *argv[]) {
     int BASE = 10;
@@ -121,7 +122,7 @@ int main( int argc, char *argv[]) {
                     return EXIT_FAILURE;
                 }
                 break;
-
+//default ase throw the error
              default:
                 fprintf(stderr,SHORT_CREATE_USAGE);
                 return EXIT_FAILURE;
@@ -141,7 +142,7 @@ int main( int argc, char *argv[]) {
         fprintf(stderr, EXTRA_ARGS,argv[0]); 
         fprintf(stderr, SHORT_CREATE_USAGE);
     }
-
+//default size
     if (size == '\0') {
         size = DEFAULT_SIZE;
     }
@@ -184,7 +185,7 @@ int main( int argc, char *argv[]) {
     table.hashFunction = &hash;
     revTable.hashFunction = &revHash;
     evoddTable.hashFunction = &evenOddHash;
-
+//populate the tables and write them to an outfile
     populateTables(&table,&revTable,&evoddTable,file);
     writeTables(outFile,&table,&revTable,&evoddTable);
 

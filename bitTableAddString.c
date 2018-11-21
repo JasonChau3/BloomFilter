@@ -2,7 +2,7 @@
  * Filename: bitTableAddString
  * Author: Jason Chau
  * Userid: cs30fie
- * Description: This function will populate the hash tables
+ * Description: This function will populate the table in a certaian index
  * Date: 11/7/18
  * Sources of Help: PIAZZA
  */
@@ -14,7 +14,7 @@
 /*
   Function Name: bitTableAddString
   Function Prototype:void bitTableAddString( table_t *table, char *string) 
-  Description: This function will populate the hash tables
+  Description: This function will populate the hash tables in a index
   Parameters: datafile - the list of emails
   htbl - the table for regular hashing
   rtbl - the table for reverse hashing

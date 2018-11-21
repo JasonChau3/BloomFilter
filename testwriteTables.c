@@ -1,8 +1,8 @@
 /*
- * Filename: testhash
+ * Filename: testwriteTables
  * Author: Jason Chau
  * Userid: cs30fie
- * Description: Unit test program to test the function hash().
+ * Description: Unit test program to test the function writeTables
  * Date: 11/7/18
  * Sources of Help: PIAZZA
  */

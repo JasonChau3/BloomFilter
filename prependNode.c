@@ -2,8 +2,8 @@
  * Filename: prependNode
  * Author: Jason Chau
  * Userid: cs30fie
- * Description: This program is meant to set a word into a database
- called a hash.
+ * Description: This program is meant to add a node into a 
+ * linked list
  * Date: 11/7/18
  * Sources of Help: PIAZZA
  */
@@ -15,7 +15,7 @@
 /*
   Function Name: prependNode()
   Function Prototype: void prependNode (linkedList_t ** head, char * str) {
-  Description: This function will set the string into a hash value.
+  Description: This function will add a node to the node
   Parameters: *str - a string pointer that points to a string
     head - pointer to the pointer to the head of the list
    Side Effects: None
