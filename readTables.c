@@ -24,14 +24,13 @@ htbl - the table for regular hashing
 rtbl - the table for reverse hashing
 eotbl - the table for eveon odd hashing
 Side Effects: None
-Error Conditions: none
+Error Conditions: fail to allocate memory
 */
 void readTables( FILE *infile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
-    int countint = 4;
     int numBytes = 8;
     int arr = 7;
     int size; 
-    
+
     //write in the sizes
     fread(&size,sizeof(int), 1, infile);
     // size = (size - arr)*numBytes;
@@ -43,7 +42,7 @@ void readTables( FILE *infile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
 
     //allocate memory for their arrays
     errno = 0;
-    htbl->bitArray = calloc((size+7)/8,sizeof(char));
+    htbl->bitArray = calloc((size+arr)/numBytes,sizeof(char));
     //if there is error throw err
     if ( errno != 0 ) {
         perror(MEM_ERR);
@@ -51,16 +50,16 @@ void readTables( FILE *infile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
     }
 
     errno = 0;
-    rtbl->bitArray = calloc((size+7)/8,sizeof(char));
+    rtbl->bitArray = calloc((size+arr)/numBytes,sizeof(char));
     //if there is error throw error
     if ( errno != 0 ) {
         free(rtbl->bitArray);
         perror(MEM_ERR);
         return;
     }
-    
-    fread((htbl->bitArray),1,(size+7)/8, infile);
-    fread((rtbl->bitArray),1,(size+7)/8, infile);
+
+    fread((htbl->bitArray),1,(size+arr)/numBytes, infile);
+    fread((rtbl->bitArray),1,(size+arr)/numBytes, infile);
 
 
     errno = 0;
@@ -94,19 +93,23 @@ void readTables( FILE *infile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
             prependNode(eotbl->llArray + llArrayIdx,str);
             //if prepend node fails
             if (errno != 0 ) {
-            for ( int x = 0; x < eotbl -> size; x++) {
-                //free all the memory
-                freeLinkedList(eotbl->llArray[x]);
-            }
-            perror(MEM_ERR);
+                for ( int x = 0; x < eotbl->size; x++) {
+                    //free all the memory
+                    freeLinkedList(eotbl->llArray[x]);
+                }
+                free(eotbl->llArray);
+                free(htbl->bitArray);
+                free(rtbl->bitArray);
+                perror(MEM_ERR);
+                return;
             }
             //otherwise reset the counter and set prepend to 1
             count = 0;
             prepended = 1;
         }
-    //if didnt prepend node then it will work
+        //if didnt prepend node then it will work
         else if (prepended == 0){
-        count++;
+            count++;
         }
     }
 

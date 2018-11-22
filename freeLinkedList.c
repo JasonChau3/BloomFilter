@@ -12,23 +12,24 @@
 #include <stdio.h>
 #include "pa3.h"
 /*
-  Function Name: freeLinkedList()
-  Function Prototype:void freeLinkedList(linkedlist_t *head) {
-  Description: This function will free the elements of a linkedlist
-  Parameters: head a pointer to the head of the linkedlist
-   Side Effects: None
-   Error Conditions: none
-   */
+   Function Name: freeLinkedList()
+   Function Prototype:void freeLinkedList(linkedlist_t *head) {
+Description: This function will free the elements of a linkedlist
+Parameters: head a pointer to the head of the linkedlist
+Side Effects: None
+Error Conditions: none
+*/
 void freeLinkedList(linkedList_t *head) {
     //loop through the whole linkedlist
+    linkedList_t *pointer;
     while ( head != NULL) {
-    //get the actual node from the pointer
-    linkedList_t *pointer = head->next;
-    //iterate the head
-    free(head->value);
-    //free the value
-    free(head);
-    //free the pointer next
-    head = pointer;
+        //get the actual node from the pointer
+        pointer =  head->next;
+        //iterate the head
+        free(head->value);
+        //free the value
+        free(head);
+        //free the pointer next
+        head = pointer;
     }
-  }
+}

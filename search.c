@@ -29,17 +29,6 @@ Error Conditions:
 2. No input file Specified
 3. Extra Arguments for the input flags
 */
-/*
-static struct option getopt[]  = {
-    {
-       LONG_HELP_FLAG, no_argument,0,'h'
-    },
-    {
-       LONG_INFILE_FLAG,  required_argument,0,'i'
-    },
-    {0,0,0,0}
-};
-*/
 int main( int argc, char *argv[]) {
     int opt;
     int incounter = 0;
@@ -84,6 +73,7 @@ int main( int argc, char *argv[]) {
     if (incounter == 0) {
         fprintf(stderr, ARG_ERR);
         fprintf(stderr, SHORT_SEARCH_USAGE);
+        fclose(file);
         return EXIT_FAILURE;
     }
  
@@ -99,7 +89,7 @@ int main( int argc, char *argv[]) {
     //create tables 
     struct Table table;
     struct Table revTable;
-    struct Table  evoddTable;
+    struct Table evoddTable;
     //set there sizes
     
     //call on the readTable
@@ -108,16 +98,17 @@ int main( int argc, char *argv[]) {
     launchUserQuery(&table,&revTable,&evoddTable);
 
     //close the file
-   fclose(file);
 
     //free the memory
-    free(table.bitArray);
-    free(revTable.bitArray);
-    for ( int x = 0; x <evoddTable.size; x++) {
+    for ( int x = 0; x < evoddTable.size; x++) {
         freeLinkedList(evoddTable.llArray[x]);
     }
 
+    free(table.bitArray);
+    free(revTable.bitArray);
     free(evoddTable.llArray);
+   
+   fclose(file);
     return EXIT_SUCCESS;
 
 }

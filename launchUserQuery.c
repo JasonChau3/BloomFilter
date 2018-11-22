@@ -41,6 +41,7 @@ void launchUserQuery(table_t *htbl, table_t *rtbl,
             *change = '\0'; 
         }
         if ( string[0] == '\0' ) {
+            fprintf(stdout,USER_PROMPT);
             continue;   //check if the first input is enter
         }
         char *ptr = string;
@@ -62,8 +63,8 @@ void launchUserQuery(table_t *htbl, table_t *rtbl,
         else if ( numString == 0) { //if none of them match
             fprintf(stdout,WORD_NOT_FOUND,string);
         }
-        fprintf(stdout,USER_PROMPT);
 
+        fprintf(stdout,USER_PROMPT);
     }
     fprintf(stdout,"%c", '\n');
 }

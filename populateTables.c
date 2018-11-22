@@ -42,7 +42,7 @@ void populateTables(table_t *htbl, table_t *rtbl,
             *ptr = c;
             ptr = ptr + 1;         //increment the pointer
         }
-            //add it all to the table
+        //add it all to the table
         bitTableAddString(htbl, string);
         bitTableAddString(rtbl, string);
         llTableAddString(eotbl, string);

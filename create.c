@@ -17,8 +17,8 @@
 /*
    Function Name: create.c
    Function Prototype:int main( int argc, char *argv[]) {
-  Description: This function will create the three hashtables in the
-  stack and populate them with the correct values.
+Description: This function will create the three hashtables in the
+stack and populate them with the correct values.
 Parameters: argc - the argument count
 argv[] the array of arguments
 Side Effects: None
@@ -122,12 +122,12 @@ int main( int argc, char *argv[]) {
                     return EXIT_FAILURE;
                 }
                 break;
-//default ase throw the error
-             default:
+                //default ase throw the error
+            default:
                 fprintf(stderr,SHORT_CREATE_USAGE);
                 return EXIT_FAILURE;
                 break;
-        
+
 
         }
     }
@@ -142,7 +142,7 @@ int main( int argc, char *argv[]) {
         fprintf(stderr, EXTRA_ARGS,argv[0]); 
         fprintf(stderr, SHORT_CREATE_USAGE);
     }
-//default size
+    //default size
     if (size == '\0') {
         size = DEFAULT_SIZE;
     }
@@ -185,7 +185,7 @@ int main( int argc, char *argv[]) {
     table.hashFunction = &hash;
     revTable.hashFunction = &revHash;
     evoddTable.hashFunction = &evenOddHash;
-//populate the tables and write them to an outfile
+    //populate the tables and write them to an outfile
     populateTables(&table,&revTable,&evoddTable,file);
     writeTables(outFile,&table,&revTable,&evoddTable);
 

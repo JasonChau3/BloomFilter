@@ -11,17 +11,17 @@
 #include <stdlib.h>
 #include "pa3.h"
 /*
-  Function Name: writeTables
-  Function Prototype:void writeTables(FILE *outFile, table_t *htbl,
-  table_t *rtbl, table_t *eotbl) 
-  Description: This function will populate the hash tables
-  Parameters: datafile - the list of emails
-  htbl - the table for regular hashing
-  rtbl - the table for reverse hashing
-  eotbl - the table for eveon odd hashing
-   Side Effects: None
-   Error Conditions: none
-   */
+   Function Name: writeTables
+   Function Prototype:void writeTables(FILE *outFile, table_t *htbl,
+   table_t *rtbl, table_t *eotbl) 
+Description: This function will populate the hash tables
+Parameters: datafile - the list of emails
+htbl - the table for regular hashing
+rtbl - the table for reverse hashing
+eotbl - the table for eveon odd hashing
+Side Effects: None
+Error Conditions: none
+*/
 void writeTables(FILE *outFile, table_t *htbl, table_t *rtbl, table_t *eotbl) { 
     int countint = 4;
     int numBytes = 8;
@@ -33,19 +33,19 @@ void writeTables(FILE *outFile, table_t *htbl, table_t *rtbl, table_t *eotbl) {
     fwrite((htbl->bitArray),1,size, outFile);
     fwrite((rtbl->bitArray),1,size,outFile);
 
-//loop through the array of the table
+    //loop through the array of the table
     for ( int x = 0 ; x < eotbl->size; x++ ) {
-    linkedList_t *ptr = eotbl->llArray[x];
-    //loop through all the nodes in each array
+        linkedList_t *ptr = eotbl->llArray[x];
+        //loop through all the nodes in each array
         while ( ptr !=  NULL ) {
             //how do i write the array into outfile
-           fputs(ptr->value, outFile);
-           fputc('\0', outFile);
-           //move the pointer to the next node
-           ptr = ptr->next;
+            fputs(ptr->value, outFile);
+            fputc('\0', outFile);
+            //move the pointer to the next node
+            ptr = ptr->next;
         }
-           fputc('\0', outFile);
-        
+        fputc('\0', outFile);
+
     }
 
-  }
+}

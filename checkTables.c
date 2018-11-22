@@ -37,7 +37,7 @@ int checkTables(char *str, table_t *htbl, table_t *rtbl, table_t *eotbl) {
         if ( retrieveBit(rtbl,str) == 1) { //if retrieveBit found the string
             numFound++; //increment the counter
 
-
+             //see if it is in the linked list
             linkedList_t *ptr = retrieveLinkedList(eotbl,str);
             if ( ptr != NULL ) {
                 numFound++;  
@@ -53,7 +53,7 @@ int checkTables(char *str, table_t *htbl, table_t *rtbl, table_t *eotbl) {
             }
         }
     }
-
+//if it is exact amount return the exact
     if ( numFound == EXACT) {
         return EXACT_MATCH;
     }
