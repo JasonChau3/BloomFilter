@@ -3,5 +3,56 @@ Author: Jason Chau
 ID: cs30fie
 Date: 11/21/18
 
+Description: This program consists of two parts. A making and a searching part.
+First of all the making part takes in a file and then converts the strings in
+those files and makes them into hashvalues. However, they aren't the same
+hashvalues. They are three different hash values using the algorithms of regular
+hashing, reverse hashing and even odd hashing. The second part of this file
+basically searches through these tables and sees if a string is in those tables.
+If it is then it is spam if it isnt then it isnt spam. However, we can't for
+sure say if it is spam or not but we can tell you when it isnt there.
 
+How to compile the program : make sure that you are in the pa3 directory with
+the create file and search file is there. then if you want to compile the create
+file you would do "make create" or to compile the search file you would do "make
+search". Make sure all the required functions that create and search are there
+to actually compile the program.
+
+How to run the program : To make sure you can properly run the program, you need
+to make sure that you compiled the program properly by following the
+instructions above, and then next make sure u are in the directory pa3 with the
+create and search files. Then you can run the program by doing "./create (insert
+flags here)" or "./search (insert flags here). There are four flags that create
+uses which is the help,size,infile, and outfile flags. However only the infile
+and outfile flags are mandatory to use. In the search file there uses the help
+and infile flags and only the infile flag is mandatory to use.
+
+Example of normal output : 
+Enter a word: a@spam.me is SPAM!
+Enter a word: aol@spam.me is SPAM!
+Enter a word: aachen@spam.me is SPAM!
+Enter a word: aaliyah@spam.me is SPAM!
+Enter a word: aaron@hack.co is SPAM!
+Enter a word: abbas@spam.me is SPAM!
+Enter a word: abbasid@spam.me is SPAM!
+
+And this would go to the outfile that you specifed it would
+go to.
+
+Example of abnormal output :
+Too many args to ./search.
+
+Usage: ./search -i inFile [-h]
+And this would go to standard error
+
+How I tested My program: I tested my program by checking edge cases as well as
+normal cases. Not only that but i also checked whether or not my output matched
+the output of the tester program. A specific example of how i tested my program
+is how i tested my program is in writetables i looped through the whole
+linkedlist array to make sure that it is properly populated and that it would
+correctly print the tables into the outfile. Another example of my testing is
+the testing that my search function would properly print out lines and error
+print statements when it should. 
+
+Answers to the README question: 
 1. I would tell him that i didn't finish the PA either XD.
