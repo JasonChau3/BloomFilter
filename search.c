@@ -57,7 +57,7 @@ int main( int argc, char *argv[]) {
                     return EXIT_FAILURE; 
                 } //break out 
                 break; 
-
+            //default case
             default:
                 fprintf(stderr,MISSING_INFILE);
                 fprintf(stderr,SHORT_SEARCH_USAGE);
@@ -107,7 +107,7 @@ int main( int argc, char *argv[]) {
     free(table.bitArray);
     free(revTable.bitArray);
     free(evoddTable.llArray);
-   
+  //close the file 
    fclose(file);
     return EXIT_SUCCESS;
 
