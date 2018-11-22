@@ -36,10 +36,6 @@ void launchUserQuery(table_t *htbl, table_t *rtbl,
     char std[BUFSIZ];
     int count = 0;
     while (fgets(string,BUFSIZ,stdin )) {
-        //    fprintf(stdout,"%s\n", string);
-
-
-
         char *change = strchr(string, '\n');
         if ( change != NULL ) {
             *change = '\0'; 
@@ -61,7 +57,6 @@ void launchUserQuery(table_t *htbl, table_t *rtbl,
             //add it all to the table
             //if what you added is a space or a null terminator
             if ( std[count] == '\0' || std[count] == ' ') {
-                std[count] = '\0';
                 
                 int numString = checkTables(std,htbl,rtbl,eotbl);
                 count = 0;
