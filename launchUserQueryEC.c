@@ -61,8 +61,8 @@ void launchUserQuery(table_t *htbl, table_t *rtbl,
             //add it all to the table
             //if what you added is a space or a null terminator
             if ( std[count] == '\0' || std[count] == ' ') {
-                if ( std[count-1] != ' '){
                 std[count] = '\0';
+                
                 int numString = checkTables(std,htbl,rtbl,eotbl);
                 count = 0;
 
@@ -76,7 +76,7 @@ void launchUserQuery(table_t *htbl, table_t *rtbl,
                     fprintf(stdout,WORD_NOT_FOUND,std);
                 }
             }
-            }
+            
             else{
             count++;
             }
